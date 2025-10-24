@@ -1,7 +1,7 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "oxyda-bot",
+  "version": "1.3.0",
+  "description": "Bot discod modular by Aghata(Owner dan Dev oxyda)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.23.2",
     "dotenv": "^17.2.3",
