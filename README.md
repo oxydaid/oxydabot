@@ -69,21 +69,21 @@ Kemudian, buka file .env dan isi semua variabel yang diperlukan:
 
 ```TOML
 # --- Kredensial Bot Discord ---
-DISCORD_TOKEN=TokenBotAndaDiSini
-CLIENT_ID=ClientIDBotAndaDiSini
-GUILD_ID=ServerIDUntukTestingAndaDiSini
+DISCORD_TOKEN=
+CLIENT_ID=
+GUILD_ID=
 
 # --- Kredensial Database MySQL ---
 # (Ini adalah database untuk BOT)
-DB_HOST=127.0.0.1
+DB_HOST=
 DB_PORT=3306
-DB_USER=root
-DB_PASS=password_database_anda
-DB_NAME=nama_database_bot_anda
+DB_USER=
+DB_PASS=
+DB_NAME=
 
 # --- Pengaturan API (untuk Dashboard Laravel) ---
 API_PORT=3000
-API_KEY=KunciApiRahasiaSuperPanjangUntukLaravelAnda
+API_KEY=
 ```
 ---
 
