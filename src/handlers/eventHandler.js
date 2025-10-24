@@ -28,7 +28,7 @@ module.exports = (client, modulePath, moduleName) => {
             }
             // console.log(`[Evt Handler] Event '${event.name}' (dari modul ${moduleName}) dimuat.`);
         } else {
-            console.warn(`[Evt Handler] ⚠️ Event di ${filePath} GAGAL dimuat. Kekurangan 'name' atau 'execute'.`);
+            console.warn(`\x1b[32m[Evt Handler] ⚠️ Event di ${filePath} GAGAL dimuat. Kekurangan 'name' atau 'execute'.\x1b[0m`);
         }
     }
 };

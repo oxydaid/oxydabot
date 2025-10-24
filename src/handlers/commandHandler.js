@@ -24,7 +24,7 @@ module.exports = (client, modulePath, moduleName) => {
             client.commands.set(command.data.name, command);
             // console.log(`[Cmd Handler] Perintah '${command.data.name}' (dari modul ${moduleName}) dimuat.`);
         } else {
-            console.warn(`[Cmd Handler] ⚠️ Perintah di ${filePath} GAGAL dimuat. Kekurangan 'data' atau 'execute'.`);
+            console.warn(`\x1b[32m[Cmd Handler] ⚠️ Perintah di ${filePath} GAGAL dimuat. Kekurangan 'data' atau 'execute'.\x1b[0m`);
         }
     }
 };

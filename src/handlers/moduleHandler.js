@@ -14,7 +14,7 @@ module.exports = (client) => {
                              .filter(dirent => dirent.isDirectory())
                              .map(dirent => dirent.name);
 
-    console.log(`\x1b[35m[Module Loader] Menemukan ${moduleFolders.length} modul...`);
+    console.log(`\x1b[35m[Module Loader] Menemukan ${moduleFolders.length} modul...\x1b[0m`);
 
     for (const moduleName of moduleFolders) {
         const modulePath = path.join(modulesPath, moduleName);
@@ -25,9 +25,9 @@ module.exports = (client) => {
             if (fs.existsSync(moduleConfigPath)) {
                 const moduleConfig = require(moduleConfigPath);
                 client.modules.set(moduleName, moduleConfig);
-                console.log(`[Module Loader] ✅ Modul '${moduleName}' (v${moduleConfig.version}) dimuat.\x1b[0m`);
+                console.log(`\x1b[35m[Module Loader] ✅ Modul '${moduleName}' (v${moduleConfig.version}) dimuat.\x1b[0m`);
             } else {
-                console.log(`[Module Loader] ✅ Modul '${moduleName}' dimuat (tanpa module.json).\x1b[0m`);
+                console.log(`\x1b[35m[Module Loader] ✅ Modul '${moduleName}' dimuat (tanpa module.json).\x1b[0m`);
             }
         } catch (e) {
             console.warn(`[Module Loader] ⚠️ Gagal memuat module.json untuk ${moduleName}:`, e);

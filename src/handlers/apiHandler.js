@@ -37,7 +37,7 @@ module.exports = (app, client) => {
                         app.use(`/api/${moduleName}`, router);
                         console.log(`\x1b[34m[API Loader] ✅ Rute untuk modul '${moduleName}' dimuat (dari ${file}).\x1b[0m`);
                     } else {
-                        console.warn(`[API Loader] ⚠️ Gagal memuat rute ${routePath}. File harus mengekspor fungsi.`);
+                        console.warn(`\x1b[32m[API Loader] ⚠️ Gagal memuat rute ${routePath}. File harus mengekspor fungsi.\x1b[0m`);
                     }
                 } catch (error) {
                      console.error(`[API Loader] ❌ Error saat memuat rute ${routePath}:`, error);

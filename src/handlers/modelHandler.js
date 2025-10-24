@@ -21,7 +21,7 @@ function loadModels(directory) {
 }
 
 module.exports = () => {
-    console.log('\x1b[34m[Model Loader] Memulai pencarian model database...');
+    console.log('\x1b[34m[Model Loader] Memulai pencarian model database...\x1b[0m');
     
     // 1. Muat model "global" (jika ada)
     const globalModelsPath = path.join(__dirname, '../database/models');
@@ -43,5 +43,5 @@ module.exports = () => {
         }
     }
     
-    console.log('[Model Loader] Semua model telah ditemukan dan didaftarkan ke Sequelize.\x1b[0m');
+    console.log('\x1b[34m[Model Loader] Semua model telah ditemukan dan didaftarkan ke Sequelize.\x1b[0m');
 };
