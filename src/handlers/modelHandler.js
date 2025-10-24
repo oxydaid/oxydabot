@@ -37,7 +37,6 @@ module.exports = () => {
     for (const moduleName of moduleFolders) {
         const moduleModelsPath = path.join(modulesPath, moduleName, 'models');
         
-        // Cek jika modul ini punya folder /models
         if (fs.existsSync(moduleModelsPath)) {
             loadModels(moduleModelsPath);
         }

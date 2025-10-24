@@ -8,7 +8,7 @@ module.exports = (client, modulePath, moduleName) => {
 
     // Cek jika folder 'events' ada
     if (!fs.existsSync(eventsPath)) {
-        return; // Modul ini mungkin tidak punya event listener kustom
+        return;
     }
 
     const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));

@@ -19,7 +19,6 @@ module.exports = (client) => {
     for (const moduleName of moduleFolders) {
         const modulePath = path.join(modulesPath, moduleName);
 
-        // Coba load module.json (info addon)
         try {
             const moduleConfigPath = path.join(modulePath, 'module.json');
             if (fs.existsSync(moduleConfigPath)) {

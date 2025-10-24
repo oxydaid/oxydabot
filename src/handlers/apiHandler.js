@@ -29,7 +29,7 @@ module.exports = (app, client) => {
                     const routeFunction = require(routePath);
                     
                     if (typeof routeFunction === 'function') {
-                        // Jalankan fungsi, berikan 'client' (untuk akses Vault)
+                        // Jalankan fungsi, berikan 'client'
                         const router = routeFunction(client);
                         
                         // Gunakan nama modul sebagai base path

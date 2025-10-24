@@ -8,7 +8,6 @@ module.exports = (client, modulePath, moduleName) => {
 
     // Cek jika folder 'commands' ada di modul ini
     if (!fs.existsSync(commandsPath)) {
-        // Modul ini mungkin tidak punya command (misal: hanya event)
         return; 
     }
 
