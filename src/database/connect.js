@@ -3,6 +3,7 @@
 const { Sequelize } = require('sequelize');
 // Kita 'keluar' dua folder (../..) untuk mencapai file config.js di root
 const config = require('../../config'); 
+const { logError } = require('../utils/errorLogger');
 
 // Inisialisasi koneksi Sequelize
 const sequelize = new Sequelize(
@@ -26,6 +27,7 @@ async function connectDB() {
         console.log('✅ Model database disinkronkan.');
     } catch (error) {
         console.error('❌ Gagal koneksi ke database:', error);
+        logError(error, null, client);
         process.exit(1); // Hentikan bot jika database gagal konek
     }
 }

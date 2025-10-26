@@ -3,6 +3,7 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, MessageFlags } = require('discord.js');
 const { sendModLog } = require('../../../utils/modLog'); // <-- 2. Impor modlog
 const Warn = require('../models/ActiveBan.js');
+const { logError } = require('../../../utils/errorLogger');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -96,7 +97,7 @@ module.exports = {
             // --- TIDAK ADA LAGI blok 'setTimeout' ---
 
         } catch (error) {
-            console.error('[TempBan] Error:', error);
+            logError(error, interaction);
             await interaction.reply({ content: 'Terjadi error saat mem-ban member.', flags: [MessageFlags.Ephemeral] });
         }
     },

@@ -7,7 +7,8 @@ module.exports = {
     discord: {
         token: process.env.DISCORD_TOKEN,
         clientId: process.env.CLIENT_ID,
-        guildId: process.env.GUILD_ID, // ID server untuk testing
+        guildId: process.env.GUILD_ID,
+        errorLogChannelId: process.env.ERROR_LOG_CHANNEL_ID
     },
     database: {
         host: process.env.DB_HOST,

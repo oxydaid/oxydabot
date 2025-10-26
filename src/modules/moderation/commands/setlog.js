@@ -2,6 +2,7 @@
 
 const { SlashCommandBuilder, PermissionsBitField, ChannelType, EmbedBuilder, MessageFlags } = require('discord.js');
 const GuildSetting = require('../../../database/models/GuildSetting'); // Path ke model
+const { logError } = require('../../../utils/errorLogger');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -32,7 +33,7 @@ module.exports = {
             await interaction.reply({ embeds: [embed], flags: [MessageFlags.Ephemeral] });
 
         } catch (error) {
-            console.error("[SetLog] Error:", error);
+            logError(error, interaction);
             await interaction.reply({ content: 'Gagal menyimpan pengaturan.', flags: [MessageFlags.Ephemeral] });
         }
     },

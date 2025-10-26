@@ -8,6 +8,7 @@ const modelHandler = require('./src/handlers/modelHandler');
 const fs = require('fs');
 const path = require('path');
 const { startServer } = require('./src/api/server');
+const { logError } = require('./src/utils/errorLogger');
 
 // --- Inisialisasi Client Bot ---
 // Tentukan 'Intents' (izin) yang dibutuhkan bot
@@ -25,6 +26,7 @@ const client = new Client({
 client.commands = new Collection(); // Menyimpan slash commands
 client.modules = new Collection(); // Menyimpan info modul
 client.settingsCache = new Collection();
+module.exports.clientInstance = client;
 
 // --- Event: Bot Siap ---
 client.once(Events.ClientReady, () => { 
@@ -44,7 +46,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
     // Jika command tidak ditemukan
     if (!command) {
-        console.error(`Command '${interaction.commandName}' tidak ditemukan.`);
+        logError(error, interaction);
         await interaction.reply({ 
             content: 'Error: Command ini tidak ditemukan.', 
             ephemeral: true 
@@ -56,7 +58,7 @@ client.on(Events.InteractionCreate, async interaction => {
     try {
         await command.execute(interaction);
     } catch (error) {
-        console.error(`Error saat menjalankan command '${interaction.commandName}':`, error);
+        logError(error, interaction);
         await interaction.reply({ 
             content: 'Terjadi error saat menjalankan command ini!', 
             ephemeral: true 

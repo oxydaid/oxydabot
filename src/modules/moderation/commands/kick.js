@@ -1,6 +1,7 @@
 // /src/modules/moderation/commands/kick.js
 
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, MessageFlags } = require('discord.js');
+const { logError } = require('../../../utils/errorLogger');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -79,7 +80,7 @@ module.exports = {
             await interaction.reply({ embeds: [embed] });
 
         } catch (error) {
-            console.error('[Kick] Error saat meng-kick member:', error);
+            logError(error, interaction);
             await interaction.reply({
                 content: 'Terjadi error saat mencoba meng-kick member.',
                 flags: [MessageFlags.Ephemeral]

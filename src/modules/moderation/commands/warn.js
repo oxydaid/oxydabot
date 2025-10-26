@@ -3,6 +3,7 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, MessageFlags } = require('discord.js');
 const Warn = require('../models/Warn.js'); // Impor model database kita
 const { sendModLog } = require('../../../utils/modLog'); // Impor utility modLog
+const { logError } = require('../../../utils/errorLogger');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -66,7 +67,7 @@ module.exports = {
             }
 
         } catch (error) {
-            console.error('[Warn] Error:', error);
+            logError(error, interaction);
             await interaction.reply({ content: 'Terjadi error saat menyimpan peringatan ke database.', flags: [MessageFlags.Ephemeral] });
         }
     },

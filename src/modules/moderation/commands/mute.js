@@ -1,6 +1,7 @@
 // /src/modules/moderation/commands/mute.js
 
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, MessageFlags } = require('discord.js');
+const { logError } = require('../../../utils/errorLogger');
 
 // Batas timeout maksimum Discord adalah 28 hari
 const MAX_TIMEOUT_MS = 28 * 24 * 60 * 60 * 1000;
@@ -72,7 +73,7 @@ module.exports = {
             }
 
         } catch (error) {
-            console.error('[Mute] Error:', error);
+            logError(error, interaction);
             await interaction.reply({ content: 'Terjadi error saat me-mute member.', flags: [MessageFlags.Ephemeral] });
         }
     },

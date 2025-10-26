@@ -2,6 +2,7 @@
 
 // 1. IMPORT MessageFlags
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, DiscordAPIError, MessageFlags } = require('discord.js');
+const { logError } = require('../../../utils/errorLogger');
 
 module.exports = {
     // ... (data command Anda, tidak berubah)
@@ -51,7 +52,7 @@ module.exports = {
             await interaction.editReply({ embeds: [embed] });
 
         } catch (error) {
-            console.error('[Clear] Error:', error);
+            logError(error, interaction);
             if (error instanceof DiscordAPIError && error.code === 50034) {
                 await interaction.editReply({ 
                     content: '❌ Gagal. Saya tidak bisa menghapus pesan yang usianya lebih dari 14 hari.' 
