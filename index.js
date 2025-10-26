@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { startServer } = require('./src/api/server');
 const { logError } = require('./src/utils/errorLogger');
+const { checkUpdates } = require('./src/utils/updateChecker');
 
 // --- Inisialisasi Client Bot ---
 // Tentukan 'Intents' (izin) yang dibutuhkan bot
@@ -29,12 +30,24 @@ client.settingsCache = new Collection();
 module.exports.clientInstance = client;
 
 // --- Event: Bot Siap ---
-client.once(Events.ClientReady, () => { 
+client.once(Events.ClientReady, async () => { 
     console.log(`\x1b[42m🤖 Bot ${client.user.tag} sudah online!\x1b[0m`);
-    
-    // Atur status bot (opsional)
+
     client.user.setActivity('Awasi Server', { type: 'WATCHING' });
     startServer(client);
+
+    try {
+        await checkUpdates(client);
+    } catch (startupCheckError) {
+         console.error("[UpdateChecker] Error saat pengecekan awal:", startupCheckError);
+    }
+    setInterval(async () => {
+        try {
+            await checkUpdates(client);
+        } catch (intervalCheckError) {
+             console.error("[UpdateChecker] Error saat pengecekan berkala:", intervalCheckError);
+        }
+    }, 6 * 60 * 60 * 1000);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
