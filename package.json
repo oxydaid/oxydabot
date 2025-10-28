@@ -1,6 +1,6 @@
 {
   "name": "oxyda-bot",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Bot discod modular by Aghata(Owner dan Dev oxyda)",
   "main": "index.js",
   "scripts": {
